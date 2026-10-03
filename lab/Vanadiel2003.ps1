@@ -87,9 +87,13 @@ function Start-Client {
         Say "The server is running; see README.md, 'What works', for where the client stands." Yellow
         return
     }
-    $module = Join-Path $Lab 'game\xi_game.dll'
-    $p = Start-Process -PassThru -WorkingDirectory (Join-Path $Lab 'game') $host64 `
-        -ArgumentList '--game', "`"$($Cfg.game_folder)`"", '--module', "`"$module`"", '--images', "`"$(Join-Path $Lab 'game')`"" `
+    $game = Join-Path $Lab 'game'
+    # host64 with the game built in (a split build would add --module <xi_game.dll>); the 2003
+    # DLLs are mapped from their unpacked images beside it; the lab server's ports
+    $hostArgs = @('--game', "`"$($Cfg.game_folder)`"", '--images', "`"$game`"", '--data-dir', "`"$(Join-Path $game 'data')`"",
+              '--server', '127.0.0.1', '--authport', '44231', '--dataport', '54230', '--viewport', '44100')
+    if (Test-Path (Join-Path $game 'playonline.reg')) { $hostArgs += @('--reg', "`"$(Join-Path $game 'playonline.reg')`"") }
+    $p = Start-Process -PassThru -WorkingDirectory $game $host64 -ArgumentList $hostArgs `
         -RedirectStandardError (Join-Path $Logs 'client.log')
     Remember 'client' $p
     Say "client: started" Green

@@ -13,10 +13,11 @@ A local Vana'diel 2003 setup for testing: a private database, the LandSandBoat s
 - **Server: yes.** 124 zones (base game and Rise of Zilart), level 75, no Trusts or later
   conveniences, LandSandBoat's era reverts, and the seasonal events of the time (Starlight
   Celebration, Egg Hunt). Logs are in `logs\`.
-- **Client: not yet.** The September 2003 client is unpacked, recompiled and boots under ffxi-native
-  (its `DllMain` runs, `GameMain` is created), but it cannot sign in: it speaks the 2003 lobby and
-  packet protocol, which LandSandBoat does not. Until the translation exists the launcher starts the
-  server and says so. When `game\host64.exe` is there, it starts that too.
+- **Client: up to sign-in.** The September 2003 client is unpacked, recompiled and runs under
+  ffxi-native (`game\host64.exe`): its window opens on the sign-in screen, where **New account**
+  makes a LandSandBoat account (Rise of Zilart only, as era2003 sets it) and Sign in signs in. What
+  comes after - the lobby and character select - is the 2003 protocol, which LandSandBoat does not
+  speak yet, so a sign-in gets no further for now.
 
 ## Notes
 
