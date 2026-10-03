@@ -1,9 +1,8 @@
 -----------------------------------
 -- era2003: LOGIN SETTINGS OVERRIDE
 -----------------------------------
--- The client this server is for: the September 2003 build. Without this, the login server
--- expects today's client (CLIENT_VER in settings/default/login.lua) and the 2003 one is told to
--- update (error 3331).
+-- The client this server is for: the September 2003 build, and what the lobby tells it the
+-- service has - the base game and Rise of Zilart, nothing after.
 --
 -- Copy to settings/login.lua (named .example here so the module loader never runs it; only the
 -- keys below are overridden).
@@ -14,6 +13,30 @@ xi.settings = xi.settings or {}
 
 xi.settings.login =
 {
+    -- Without this the login server expects today's client and tells the 2003 one to update
+    -- (error 3331).
     CLIENT_VER = '30030905_0',
     VER_LOCK   = 1, -- exactly that client
+
+    -- The expansions the lobby shows: Rise of Zilart only (accounts' own expansions column is
+    -- set by sql/accounts_2003.sql).
+    RISE_OF_ZILART          = true,
+    CHAINS_OF_PROMATHIA     = false,
+    TREASURES_OF_AHT_URGHAN = false,
+    WINGS_OF_THE_GODDESS    = false,
+    A_CRYSTALLINE_PROPHECY  = false,
+    A_MOOGLE_KUPOD_ETAT     = false,
+    A_SHANTOTTO_ASCENSION   = false,
+    VISIONS_OF_ABYSSEA      = false,
+    SCARS_OF_ABYSSEA        = false,
+    HEROES_OF_ABYSSEA       = false,
+    SEEKERS_OF_ADOULIN      = false,
+
+    -- Mog Wardrobes came years later.
+    MOG_WARDROBE_3 = false,
+    MOG_WARDROBE_4 = false,
+    MOG_WARDROBE_5 = false,
+    MOG_WARDROBE_6 = false,
+    MOG_WARDROBE_7 = false,
+    MOG_WARDROBE_8 = false,
 }

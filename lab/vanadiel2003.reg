@@ -1,0 +1,7 @@
+REGEDIT4
+
+; Vana'diel 2003: the client settings the lab starts the 2003 client with, over the exported ones.
+; 0022: show opening movie - off. The opening movie plays through DirectShow, which the
+; game host does not have; the 2003 client then crashes making the movie's texture.
+[HKEY_LOCAL_MACHINE\SOFTWARE\PlayOnlineUS\SquareEnix\FinalFantasyXI]
+"0022"=dword:00000000

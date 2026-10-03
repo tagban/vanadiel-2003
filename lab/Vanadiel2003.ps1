@@ -93,6 +93,12 @@ function Start-Client {
     $hostArgs = @('--game', "`"$($Cfg.game_folder)`"", '--images', "`"$game`"", '--data-dir', "`"$(Join-Path $game 'data')`"",
               '--server', '127.0.0.1', '--authport', '44231', '--dataport', '54230', '--viewport', '44100')
     if (Test-Path (Join-Path $game 'playonline.reg')) { $hostArgs += @('--reg', "`"$(Join-Path $game 'playonline.reg')`"") }
+    # after them: the display settings the sign-in screen keeps (loaded by default only when no
+    # --reg-final is given), then the lab's own for the 2003 client (vanadiel2003.reg: no opening
+    # movie, which has nothing to play it on)
+    foreach ($r in (Join-Path $game 'data\settings.reg'), (Join-Path $game 'vanadiel2003.reg')) {
+        if (Test-Path $r) { $hostArgs += @('--reg-final', "`"$r`"") }
+    }
     $p = Start-Process -PassThru -WorkingDirectory $game $host64 -ArgumentList $hostArgs `
         -RedirectStandardError (Join-Path $Logs 'client.log')
     Remember 'client' $p
