@@ -1,0 +1,4 @@
+[submodule "ffxi-native"]
+	path = ffxi-native
+	url = https://github.com/tagban/ffxi-native.git
+	branch = build-2003

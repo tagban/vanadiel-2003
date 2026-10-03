@@ -47,8 +47,9 @@ things about it differ from everything ffxi-native supported before:
 | discovery pass (Ghidra) for FFXi.dll | done, clean |
 | discovery pass for FFXiMain.dll | done: 16,512 functions, 623 switches, gate clean |
 | translate both DLLs to C | done (its SIMD paths, like 2026's, stay unused: the runtime reports a CPU without MMX/SSE/3DNow!) |
-| game host maps an unpacked image (no POL1) | written; boot test in progress |
-| server: `era2003` module (zones, accounts, settings) | done, untested in play |
+| game host maps an unpacked image (no POL1) | done: the boot test passes (`DllMain` runs, `GameMain` is created) |
+| server: `era2003` module (zones, accounts, settings, seasonal events) | done; starts in the lab, untested in play |
+| the lab (`lab/`): private database, launcher, desktop shortcut | done |
 | the 2003 sign-in (PlayOnline of 2003) | to do |
 | the 2003 packet protocol, both ways | to do |
 | the launcher | to do |
