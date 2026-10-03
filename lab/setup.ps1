@@ -9,7 +9,7 @@ and its databases are left alone.
             [-Game "<FINAL FANTASY XI 2003 folder>"] [-NoShortcut]
 
 The checkout must have modules/era2003 and list it in modules/init.txt (with era/lua and era/data),
-and settings/main.lua copied from modules/era2003/settings/main.lua.example.
+and settings/main.lua and settings/login.lua copied from modules/era2003/settings/*.lua.example.
 #>
 param(
     [Parameter(Mandatory = $true)][string]$Server,
@@ -34,8 +34,10 @@ function Sql($user, $pw, $text, $db = '') {
 }
 
 if (-not (Test-Path (Join-Path $Server 'modules\era2003'))) { throw "$Server has no modules\era2003" }
-if (-not (Test-Path (Join-Path $Server 'settings\main.lua'))) {
-    throw "$Server\settings\main.lua missing: copy modules\era2003\settings\main.lua.example there"
+foreach ($f in 'main.lua', 'login.lua') {
+    if (-not (Test-Path (Join-Path $Server "settings\$f"))) {
+        throw "$Server\settings\$f missing: copy modules\era2003\settings\$f.example there"
+    }
 }
 if (Test-Path (Join-Path $Lab 'db')) { throw "$Lab\db already exists: this lab is set up (delete it to start over)" }
 

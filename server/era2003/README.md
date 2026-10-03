@@ -11,6 +11,7 @@ cap, and none of the later conveniences. Built for the real September 2003 clien
 | Zones | `sql/zone_settings_2003.sql` deletes the 176 zones the 2003 client has no data for; 124 remain (`KEPT_ZONES.txt`). |
 | Accounts | `sql/accounts_2003.sql`: new accounts own Rise of Zilart only. |
 | Rules | `settings/main.lua.example`: expansions off past RoZ, `RESTRICT_CONTENT` on, level 75, no Trusts, Records of Eminence, home point warps, Mog House 2F and the like, old stat ratios and formulas. |
+| Login | `settings/login.lua.example`: the login server expects the September 2003 client (`30030905_0`), not today's; without it the 2003 client is told to update (error 3331). |
 | Era behaviour | LandSandBoat's own `era` module: its Lua overrides apply because those expansions are now off. |
 | Seasonal events | `lua/seasonal_events.lua`: only the Starlight Celebration and the Egg Hunt are checked, each on its own. Strange Happenings' mobs live in removed zones and its error used to abort the whole check, Starlight included. |
 
@@ -34,7 +35,8 @@ kept for administration.
    what no longer fits logged: the Vana'diel 2003 lab's `setup.ps1` does this.
 
    (and remove `custom/lua/moghouse_auto_grant_trust.lua` if listed: no Trusts in 2003).
-2. Copy `modules/era2003/settings/main.lua.example` to `settings/main.lua`. Settings are read before
+2. Copy `modules/era2003/settings/main.lua.example` to `settings/main.lua`, and `login.lua.example`
+   to `settings/login.lua`. Settings are read before
    modules load, so this one piece cannot come from the module itself. The file only overrides the
    keys it names.
 3. Reimport the database with `tools/dbtool.py`: module SQL runs after the base tables, so the

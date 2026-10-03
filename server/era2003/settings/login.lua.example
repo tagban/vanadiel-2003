@@ -1,0 +1,19 @@
+-----------------------------------
+-- era2003: LOGIN SETTINGS OVERRIDE
+-----------------------------------
+-- The client this server is for: the September 2003 build. Without this, the login server
+-- expects today's client (CLIENT_VER in settings/default/login.lua) and the 2003 one is told to
+-- update (error 3331).
+--
+-- Copy to settings/login.lua (named .example here so the module loader never runs it; only the
+-- keys below are overridden).
+-----------------------------------
+
+xi = xi or {}
+xi.settings = xi.settings or {}
+
+xi.settings.login =
+{
+    CLIENT_VER = '30030905_0',
+    VER_LOCK   = 1, -- exactly that client
+}
