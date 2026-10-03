@@ -1,0 +1,67 @@
+-----------------------------------
+-- era2003: MAIN SETTINGS OVERRIDE
+-----------------------------------
+-- Late 2003: the base game and Rise of Zilart, as North America launched with.
+--
+-- Settings are read before modules load, so this cannot apply itself. Copy it to
+-- settings/main.lua (named .example here so the module loader never runs it; gitignored there; only the keys below are overridden, every other key keeps its
+-- value from settings/default/main.lua).
+-----------------------------------
+
+xi = xi or {}
+xi.settings = xi.settings or {}
+
+xi.settings.main =
+{
+    -- Expansions: the toggles only take effect with RESTRICT_CONTENT on.
+    RESTRICT_CONTENT = 1,
+    ENABLE_ROTZ      = 1,
+    ENABLE_COP       = 0,
+    ENABLE_TOAU      = 0,
+    ENABLE_WOTG      = 0,
+    ENABLE_ACP       = 0,
+    ENABLE_AMK       = 0,
+    ENABLE_ASA       = 0,
+    ENABLE_ABYSSEA   = 0,
+    ENABLE_SOA       = 0,
+    ENABLE_ROV       = 0,
+    ENABLE_TVR       = 0,
+    ENABLE_VOIDWATCH = 0,
+
+    -- Later conveniences that did not exist yet.
+    ENABLE_MOG_HOUSE_2F   = 0,
+    ENABLE_MOG_GARDEN     = 0,
+    ENABLE_FIELD_MANUALS  = 0,
+    ENABLE_GROUNDS_TOMES  = 0,
+    ENABLE_SURVIVAL_GUIDE = 0,
+    ENABLE_DAILY_TALLY    = 0,
+    ENABLE_ROE            = 0,
+    ENABLE_ROE_TIMED      = 0,
+    ENABLE_MAGIAN_TRIALS  = 0,
+    ENABLE_VOIDWALKER     = 0,
+    ENABLE_TRUST_CASTING  = 0,
+    ENABLE_GARRISON       = false,
+    ENABLE_NYZUL_CASKETS  = false,
+    ENABLE_VIGIL_DROPS    = false,
+    EXPLORER_MOOGLE_LV    = 0,
+    HOMEPOINT_TELEPORT    = 0,
+
+    -- Level 75 cap; the 50 starting cap and Limit Break quests stay as they are by default.
+    MAX_LEVEL = 75,
+
+    -- Stat ratios and formulas from before their later revisions.
+    HAND_TO_HAND_DEX_ACCURACY_MULTIPLIER       = 0.5,
+    ONE_HAND_MAIN_HAND_DEX_ACCURACY_MULTIPLIER = 0.5,
+    ONE_HAND_OFF_HAND_DEX_ACCURACY_MULTIPLIER  = 0.5,
+    RANGED_AGI_ACCURACY_MULTIPLIER             = 0.5,
+    PLAYER_ALLIES_VIT_DEF_MULTIPLIER           = 0.5,
+    RANGED_ATTACK_FREE_PHASE_DELAY             = 1200,
+    USE_ADOULIN_WEAPON_SKILL_CHANGES           = false,
+    ENABLE_SMN_MAGIC_CAST_TIME_MERIT           = false,
+    USE_OLD_CURE_FORMULA                       = true,
+    USE_OLD_MAGIC_DAMAGE                       = true,
+
+    -- Genkai 1 and 2 the old way.
+    OLDSCHOOL_G1 = true,
+    OLDSCHOOL_G2 = true,
+}
